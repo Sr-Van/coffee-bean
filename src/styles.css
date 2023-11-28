@@ -4,4 +4,13 @@
 /*font-family: 'Playfair Display', serif; */
 /* font-family: 'Clicker Script', cursive; */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  width: 100%;
+  position: relative;
+}
