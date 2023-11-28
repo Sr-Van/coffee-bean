@@ -1,0 +1,53 @@
+.first-content {
+  height: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.texts {
+  font-family: 'Playfair Display', serif;
+  margin-left: 60px;
+  margin-top: 93px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  color: #38220F;
+}
+
+.subtitle-f-c {
+  font-size: 54px;
+}
+
+.paragraph-f-c {
+  font-size: 20px;
+  max-width: 380px;
+}
+
+.heart-img img {
+  margin-top: 46px;
+  width: 420px;
+}
+.splash {
+  width: 100%;
+  position: absolute;
+}
+
+.splash img:nth-child(1){
+  position: absolute;
+  right: 0;
+  top: 400px;
+  width: 733px;
+  transform: rotate(180deg);
+}
+.splash img:nth-child(2){
+  position: absolute;
+  top: 1000px;
+  width: 733px;
+  transform: rotate(360deg);
+}
+
+.second-content  {
+  height: 600px;
+}

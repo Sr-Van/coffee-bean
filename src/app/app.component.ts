@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Coffes } from './shared/interfaces/coffes';
+import { CoffeeService } from './shared/services/coffee.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'coffeBean';
+
+  coffee = inject(CoffeeService)
+  subs: Subscription
+
+  coffeeList: Coffes[] = []
+
+  ngOnInit() {
+    this.coffeeList = this.coffee.getCoffeeList()
+    console.log(this.coffeeList)
+  }
 }
