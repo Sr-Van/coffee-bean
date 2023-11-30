@@ -14,4 +14,15 @@ body {
   width: 100%;
   position: relative;
   background-color: #ECE0D1;
+
+  scroll-snap-type: both mandatory;
+  scroll-behavior: smooth;
+}
+
+.visually_hidden {
+  opacity: 0;
+}
+
+.content {
+  scroll-snap-align: start;
 }

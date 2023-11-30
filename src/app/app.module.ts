@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { CardComponent } from './shared/components/card/card.component';
+import { CardAboutComponent } from './shared/components/card-about/card-about.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CardComponent } from './shared/components/card/card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeaderComponent
+    HeaderComponent,
+    CardAboutComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

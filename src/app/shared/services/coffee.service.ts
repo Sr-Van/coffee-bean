@@ -35,4 +35,26 @@ export class CoffeeService {
       },
     ]
   }
+
+  getAboutList() {
+    return [
+      {
+        title: "Supreme Beans",
+        text: "Beans that provides great taste"
+      },
+      {
+        title: "High Quality",
+        text: "We provide the highest quality"
+      },
+      {
+        title: "Extraordinary",
+        text: "Coffee like you have never tasted"
+      },
+      {
+        title: "Affordable Price",
+        text: "Our Coffee prices are easy to afford"
+      }
+
+    ]
+  }
 }

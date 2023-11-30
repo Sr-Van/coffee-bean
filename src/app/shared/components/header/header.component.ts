@@ -18,19 +18,20 @@ import { Component } from '@angular/core';
       `,
   styles: [`
     .navbar {
-    height: 90px;
-    width: 100%;
-    color: #fff;
-    background-color: rgb(56, 34, 15, 0.6);
+      height: 90px;
+      width: 100%;
+      color: #fff;
+      background-color: rgb(56, 34, 15, 0.6);
 
-    display: flex;
-    padding: 0 60px;
-    align-items: center;
-    justify-content: space-between;
+      display: flex;
+      padding: 0 60px;
+      align-items: center;
+      justify-content: space-between;
 
-    overflow: hidden;
-    position: fixed;
-    top: 0;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      z-index: 999;
     }
 
     .brand {

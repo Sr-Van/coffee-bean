@@ -13,8 +13,10 @@ export class AppComponent {
   coffee = inject(CoffeeService)
 
   coffeeList: Coffes[] = []
+  aboutList: any[] = []
 
   ngOnInit() {
+    this.aboutList = this.coffee.getAboutList()
     this.coffeeList = this.coffee.getCoffeeList()
     console.log(this.coffeeList)
   }
