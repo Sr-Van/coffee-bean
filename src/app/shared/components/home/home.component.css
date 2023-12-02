@@ -1,7 +1,7 @@
 
 .home {
   position: relative;
-  z-index: -1;
+  z-index: 10;
   width: 100%;
   height: 100dvh;
 
@@ -10,6 +10,9 @@
   background-size: cover;
   background-blend-mode: darken;
   background-repeat: no-repeat;
+  --parallax-speed: 20;
+
+  animation: parallax linear;
 }
 
 .text {
@@ -65,22 +68,36 @@
   position: absolute;
   width: 178px;
 
-  right: 198px;
-  top: 158px;
+  top: 200px;
+  right: 200px;
 }
 
-.graos-bg {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100dvh;
 
-  background: url('../../../../assets/images/580b57fbd9996e24bc43c0ed.png'), rgb(56, 34, 15, 2.5);
-  background-position: center;
-  background-size: contain;
-  background-blend-mode: darken;
-  background-repeat: no-repeat;
-  opacity: .4;
+.parallax {
+  position: relative;
+  display: grid;
+  grid-template-areas: "stack";
+}
 
-  bottom: 110px;
+.parallax > * {
+  grid-area: stack;
+  animation: parallax linear;
+  animation-timeline: scroll();
+}
+
+.parallax_xicara {
+  --parallax-speed: 2;
+  z-index: 10;
+}
+
+.parallax_bg {
+  --parallax-speed: -1;
+}
+
+
+
+@keyframes parallax {
+  to {
+    transform: translateY(calc(var(--parallax-speed) * -200px));
+  }
 }
