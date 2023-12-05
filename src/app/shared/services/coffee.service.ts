@@ -5,9 +5,11 @@ import { Coffes } from '../interfaces/coffes';
   providedIn: 'root'
 })
 export class CoffeeService {
-  coffeeCart: Coffes[]
+  coffeeCart: any[] = []
 
-  constructor() { }
+  constructor() {
+    this.getCartList()
+  }
 
   getCoffeeList() {
     return [
@@ -60,15 +62,48 @@ export class CoffeeService {
     ]
   }
 
+  filterCartList(item: any) {
+    console.log(this.coffeeCart.map(coffee => coffee === item)[0]);
 
+    return this.coffeeCart.filter(coffee => coffee.name === item)[0]
+  }
 
+  removeItem(item: any) {
+    const index = this.coffeeCart.map(coff => coff.name).indexOf(item)
 
+    this.coffeeCart.splice(index, 1)
+    this.setCoffeeCart()
+  }
+
+  addCoffeToCart(item: any) {
+    if(this.filterCartList(item)) {
+      this.removeItem(item)
+      return
+    }
+    const coffeList = this.getCoffeeList()
+    const itemToAdd = coffeList.filter(coff => coff.name == item )[0]
+    console.log(`item adicionado ${item}`);
+
+    this.coffeeCart.push(itemToAdd)
+    this.setCoffeeCart()
+  }
+
+  setCoffeeCart() {
+    localStorage.setItem("coffeeCart", JSON.stringify(this.coffeeCart))
+  }
 
   getCartList() {
+    console.log('entrando no getCartList');
+
     if(localStorage['coffeeCart']) {
       this.coffeeCart = JSON.parse(localStorage.getItem('coffeeCart') || '')
       return
     }
+    this.setCoffeeCart()
     return
+  }
+
+  getTotalCoffePrice() {
+    return this.coffeeCart.reduce((accumulator, {price}) =>  accumulator + parseFloat(price), 0) || 0
   }
 }
