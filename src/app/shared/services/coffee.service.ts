@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Coffes } from '../interfaces/coffes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoffeeService {
+  coffeeCart: Coffes[]
 
   constructor() { }
 
@@ -56,5 +58,17 @@ export class CoffeeService {
       }
 
     ]
+  }
+
+
+
+
+
+  getCartList() {
+    if(localStorage['coffeeCart']) {
+      this.coffeeCart = JSON.parse(localStorage.getItem('coffeeCart') || '')
+      return
+    }
+    return
   }
 }

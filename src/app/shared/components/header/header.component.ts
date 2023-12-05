@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -11,7 +12,7 @@ import { Component } from '@angular/core';
         <li>Contact</li>
         <li>About us</li>
         <li class="button">
-          <a href="#" class="order-btn">Order Now</a>
+          <a class="order-btn" routerLink="order">Order Now</a>
         </li>
       </ul>
     </nav>
@@ -65,7 +66,8 @@ import { Component } from '@angular/core';
       text-decoration: none;
       color: #fff;
     }`
-]
+],
+  imports: [RouterModule]
 })
 export class HeaderComponent {
 

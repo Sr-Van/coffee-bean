@@ -9,15 +9,4 @@ import { CoffeeService } from './shared/services/coffee.service';
 })
 export class AppComponent {
   title = 'coffeBean';
-
-  coffee = inject(CoffeeService)
-
-  coffeeList: Coffes[] = []
-  aboutList: any[] = []
-
-  ngOnInit() {
-    this.aboutList = this.coffee.getAboutList()
-    this.coffeeList = this.coffee.getCoffeeList()
-    console.log(this.coffeeList)
-  }
 }

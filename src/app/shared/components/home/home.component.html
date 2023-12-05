@@ -19,3 +19,62 @@
   </div>
 
 </div>
+
+<div class="marker visually_hidden" #mark1></div>
+  <section>
+    @defer (on viewport(mark1)) {
+      <div class="content first-content">
+        <div class="texts">
+          <h2 class="subtitle-f-c">The best choice...</h2>
+          <p class="paragraph-f-c">
+            When you need to power up your energys
+            for the day, you need to choose the right
+            one. The coffee we use comes from Brazil
+            and has a latino sauce, when we put with
+            one of the best milk we can find you fill
+            the power you need for your day.
+          </p>
+        </div>
+        <div class="heart-img">
+          <img src="../assets/images/toppng.com-coffee-png-1281x1197.png" alt="">
+        </div>
+        <div class="splash">
+          <img src="../assets/images/kisspng-coffee-juice-cafe-splash-splash-of-coffee-5a880ddc9644b9.7041855115188658846155.png" alt="">
+          <img src="../assets/images/kisspng-coffee-juice-cafe-splash-splash-of-coffee-5a880ddc9644b9.7041855115188658846155.png" alt="">
+        </div>
+      </div>
+    }
+
+    <div class="marker visually_hidden" #mark2></div>
+
+    @defer(on viewport(mark2)) {
+      <div class="content second-content">
+        <h1 class="second-content-title">Enjoy your life, enjoy our coffee</h1>
+        <div >
+          @for (item of coffeeList; track $index) {
+            <app-card [card]="item"></app-card>
+          }
+        </div>
+      </div>
+    }
+
+    <div class="marker visually_hidden" #mark3></div>
+
+    @defer (on viewport(mark3)) {
+      <div class="content third-content">
+        <h1 class="third-content-title">Why are we different?</h1>
+        <h4>We don’t just make your coffee, we make your day!</h4>
+        <div >
+          @for (item of aboutList; track $index) {
+            <app-card-about [card]="item" [index]="$index"></app-card-about>
+          }
+        </div>
+        <div class="third-content-footer">
+          <h4>
+            Great ideas start with great coffee, lets help you achive that
+          </h4>
+          <h1>Get started today.</h1>
+        </div>
+      </div>
+    }
+  </section>
