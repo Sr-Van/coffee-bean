@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CoffeeService } from '../../services/coffee.service';
+import { Coffes } from '../../interfaces/coffes';
 
 @Component({
   selector: 'app-orders',
@@ -9,5 +11,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './orders.component.css'
 })
 export class OrdersComponent {
+  coffeServ = inject(CoffeeService)
+
+  cartCoffeList: Coffes[]
+
+  ngOnInit() {
+    this.cartCoffeList = this.coffeServ.coffeeCart
+  }
 
 }

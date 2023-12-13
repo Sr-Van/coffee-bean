@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { CoffeeService } from '../../services/coffee.service';
 
 @Component({
   selector: 'app-card',
@@ -19,7 +20,7 @@ import { Component, Input } from '@angular/core';
       </div>
     </div>
 
-    <button class="button">Order Now</button>
+    <button class="button order-btn" [attr.data-item]="dataIndex" (click)="toggleCart(dataIndex)" >{{ buttonText }}</button>
   </div>
 `,
   styles: [`
@@ -104,13 +105,31 @@ import { Component, Input } from '@angular/core';
 `]
 })
 export class CardComponent {
+  coffeeServ = inject(CoffeeService)
 
   @Input('card') card: any
 
   source: string
+  dataIndex: any
+  buttonText: string
 
   ngOnInit() {
     this.source = `../../../../assets/images/${this.card.name}.jpg`
+    this.dataIndex = this.card.name
+    this.checkButton()
+  }
+
+  toggleCart(item: any) {
+    this.coffeeServ.addCoffeToCart(item)
+    this.checkButton()
+  }
+
+  checkButton() {
+    if(this.coffeeServ.filterCartList(this.card.name)) {
+      this.buttonText = 'Ordered'
+      return
+    }
+    this.buttonText = 'Order Now'
   }
 
 }
