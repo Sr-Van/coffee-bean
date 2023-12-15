@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
   selector: 'app-header',
   template: `
     <nav class="navbar">
-      <h1 class="brand">Coffee Bean</h1>
+      <h1 class="brand" routerLink="/">Coffee Bean</h1>
       <ul class="links">
-        <li>Home</li>
+        <li (click)="scrollTo('home')">Home</li>
         <li>Contact</li>
         <li>About us</li>
         <li class="button">
@@ -70,5 +70,10 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule]
 })
 export class HeaderComponent {
+
+  scrollTo(el: any) {
+    (document.getElementById(el) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+
+  }
 
 }
