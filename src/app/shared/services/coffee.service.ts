@@ -63,12 +63,13 @@ export class CoffeeService {
   }
 
   filterCartList(item: any) {
-    console.log(this.coffeeCart.map(coffee => coffee === item)[0]);
+    console.log(this.coffeeCart.filter(coffee => coffee.name === item)[0]);
 
     return this.coffeeCart.filter(coffee => coffee.name === item)[0]
   }
 
   removeItem(item: any) {
+    
     const index = this.coffeeCart.map(coff => coff.name).indexOf(item)
 
     this.coffeeCart.splice(index, 1)

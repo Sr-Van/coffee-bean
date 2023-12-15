@@ -113,7 +113,7 @@ export class CardComponent {
   dataIndex: any
   buttonText: string
 
-  ngOnInit() {
+  ngOnInit() { 
     this.source = `../../../../assets/images/${this.card.name}.jpg`
     this.dataIndex = this.card.name
     this.checkButton()

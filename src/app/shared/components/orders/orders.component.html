@@ -2,8 +2,12 @@
 <div class="orders">
   <h1>Orders</h1>
   <div class="orders_list">
-    <ul>
-
+    <ul style="list-style: none; display: flex; flex-wrap: wrap; width: 50%; gap: 1rem; margin: 30px 0;">
+      @for (item of cartCoffeList; track $index) {
+        <li>
+          <app-card-cart [item]="item"></app-card-cart>
+        </li>
+      }
     </ul>
   </div>
   <div class="orders_footer">

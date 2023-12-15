@@ -7,18 +7,22 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { CardComponent } from './shared/components/card/card.component';
 import { CardAboutComponent } from './shared/components/card-about/card-about.component';
+import { CardCartComponent } from './shared/components/orders/card-cart/card-cart.component';
+import { OrdersComponent } from './shared/components/orders/orders.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CardComponent
+    CardComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HeaderComponent,
-    CardAboutComponent
+    CardAboutComponent,
+    CardCartComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,18 @@
+<div class="card_cart">
+  <div class="card_cart_texts">
+    <div class="card_cart_texts_upper">
+      <span>{{ item.name }}</span>
+      <span>{{ item.price | currency }}</span>
+    </div>
+    <div class="card_cart_texts_lower">
+      <p (click)="decreaseQuant()">-</p>
+      <input type="text" [value]="quantity" disabled [attr.data-id]="item.name">
+      <p (click)="increaseQuant()">+</p>
+    </div>
+  </div>
+  <div class="card_cart_image">
+    <a (click)="removeItem(item.name)">remove</a>
+    <img [src]="source" [alt]="item.name">
+  </div>
+</div>
+
