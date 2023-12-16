@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Coffes } from '../interfaces/coffes';
 
 @Injectable({
@@ -6,6 +6,7 @@ import { Coffes } from '../interfaces/coffes';
 })
 export class CoffeeService {
   coffeeCart: any[] = []
+  cartEvent = new EventEmitter<any>
 
   constructor() {
     this.getCartList()
@@ -17,25 +18,29 @@ export class CoffeeService {
         name: 'Cappuccino',
         coffeePerc: 50,
         milkPerc: 50,
-        price: 8.50
+        price: 8.50,
+        quantity: 1
       },
       {
         name: 'Chai Latte',
         coffeePerc: 30,
         milkPerc: 70,
-        price: 12
+        price: 12,
+        quantity: 1
       },
       {
         name: 'Macchiato',
         coffeePerc: 60,
         milkPerc: 40,
-        price: 10
+        price: 10,
+        quantity: 1
       },
       {
         name: 'Expresso',
         coffeePerc: 80,
         milkPerc: 20,
-        price: 5
+        price: 5,
+        quantity: 1
       },
     ]
   }
@@ -69,7 +74,7 @@ export class CoffeeService {
   }
 
   removeItem(item: any) {
-    
+
     const index = this.coffeeCart.map(coff => coff.name).indexOf(item)
 
     this.coffeeCart.splice(index, 1)
@@ -105,6 +110,32 @@ export class CoffeeService {
   }
 
   getTotalCoffePrice() {
-    return this.coffeeCart.reduce((accumulator, {price}) =>  accumulator + parseFloat(price), 0) || 0
+    return this.coffeeCart.reduce(
+      (accumulator, {price, quantity}) =>
+        accumulator + (parseFloat(price) * quantity), 0) || 0
+  }
+
+  increaseQuantity(item: any) {
+    const coff = this.coffeeCart.filter(coffee => coffee.name === item)[0]
+
+    if(coff.quantity >= 10) {
+      return
+    }
+
+    coff.quantity++
+    this.setCoffeeCart()
+
+  }
+
+  decreaseQuantity(item: any) {
+    const coff = this.coffeeCart.filter(coffee => coffee.name === item)[0]
+
+    if(coff.quantity <= 1) {
+      return
+    }
+
+    coff.quantity--
+    this.setCoffeeCart()
+
   }
 }

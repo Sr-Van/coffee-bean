@@ -15,27 +15,23 @@ export class CardCartComponent {
 
   @Input('item') item: any
   source: string
-  quantity: number = 1
 
   ngOnInit() {
     this.source = `../../../../assets/images/${this.item.name}.jpg`
   }
 
-  increaseQuant() {
-    if(this.quantity >= 10) {
-      return
-    }
-    this.quantity++
+  increaseQuant(item: any) {
+    this.coffServ.cartEvent.emit()
+    this.coffServ.increaseQuantity(item)
   }
 
-  decreaseQuant() {
-    if(this.quantity <= 1) {
-      return
-    }
-    this.quantity--
+  decreaseQuant(item: any) {
+    this.coffServ.cartEvent.emit()
+    this.coffServ.decreaseQuantity(item)
   }
 
   removeItem(item: any) {
+    this.coffServ.cartEvent.emit()
     this.coffServ.removeItem(item)
   }
 }

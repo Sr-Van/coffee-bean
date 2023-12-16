@@ -5,9 +5,9 @@
       <span>{{ item.price | currency }}</span>
     </div>
     <div class="card_cart_texts_lower">
-      <p (click)="decreaseQuant()">-</p>
-      <input type="text" [value]="quantity" disabled [attr.data-id]="item.name">
-      <p (click)="increaseQuant()">+</p>
+      <p (click)="decreaseQuant(item.name)">-</p>
+      <input type="text" [value]="item.quantity" disabled [attr.data-id]="item.name">
+      <p (click)="increaseQuant(item.name)">+</p>
     </div>
   </div>
   <div class="card_cart_image">
