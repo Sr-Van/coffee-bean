@@ -1,13 +1,49 @@
-.orders {
+section {
   margin-top: 100px;
   padding: 0 60px;
   font-family: 'Playfair Display', serif;
 
 }
 
-.orders h1 {
+.form, .form div {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 30px;
+}
+
+
+.form input {
+  width: 300px;
+  height: 30px;
+  background-color: #FFEED8;
+  border: none;
+  outline: none;
+
+  border-radius: .2rem;
+
+  padding: 1rem;
+
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+}
+
+.form select {
+  width: 300px;
+  height: 30px;
+  background-color: #FFEED8;
+  border: none;
+  outline: none;
+
+  border-radius: .2rem;
+
+}
+
+.orders h1, .form h1 {
   color: #603809;
   font-size: 30px;
+
+  margin-top: 30px;
 }
 
 .orders_footer {

@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
       <h1 class="brand" routerLink="/">Coffee Bean</h1>
       <ul class="links">
         <li (click)="scrollTo('home')">Home</li>
-        <li>Contact</li>
-        <li>About us</li>
+        <li (click)="scrollTo('contact')">Contact</li>
+        <li (click)="scrollTo('about')">About us</li>
         <li class="button">
           <a class="order-btn" routerLink="order">Order Now</a>
         </li>

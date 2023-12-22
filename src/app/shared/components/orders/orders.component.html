@@ -1,26 +1,58 @@
+<section>
+  <div class="form">
+    <h1>Your Addres: </h1>
+    <form [formGroup]="address">
+      <div>
+        <span>Address:</span>
+        <input type="text" formControlName="addres">
+      </div>
+      <div>
+        <span>Aditional:</span>
+        <input type="text" formControlName="aditional">
+      </div>
+      <div>
+        <span>Contact Number:</span>
+        <input type="text" formControlName="contact">
+      </div>
 
-<div class="orders">
-  <h1>Orders</h1>
-  <div class="orders_list">
-    <ul style="list-style: none; display: flex; flex-wrap: wrap; width: 50%; gap: 1rem; margin: 30px 0;">
-      @for (item of cartCoffeList; track $index) {
-        <li>
-          <app-card-cart [item]="item"></app-card-cart>
-        </li>
-      }
-    </ul>
+      <div>
+        <span>Payment method:</span>
+        <select name="select" id="" formControlName="payment">
+          <option value="Money">Money</option>
+          <option value="Credit card">Credit card</option>
+          <option value="Pix">Pix</option>
+        </select>
+      </div>
+    </form>
   </div>
-  <div class="orders_footer">
-    <div>
-      <h1>Your Order</h1>
-      <button class="button">Confirm</button>
+  <div class="orders">
+    <h1>Orders</h1>
+    <div class="orders_list">
+      <ul style="list-style: none; display: flex; flex-wrap: wrap; width: 50%; gap: 1rem; margin: 30px 0;">
+        @for (item of cartCoffeList; track $index) {
+          <li>
+            <app-card-cart [item]="item"></app-card-cart>
+          </li>
+        }
+      </ul>
     </div>
-    <div>
-      <h3>Total: {{ totalPrice | currency }}</h3>
-      <address>
-        <p>rua bla bla bla, 299, centro</p>
-      </address>
-      <p>Via credit card</p>
+    <div class="orders_footer">
+      <div>
+        <h1>Your Order</h1>
+        <button class="button">Confirm</button>
+      </div>
+      <div>
+        <h3>Total: {{ totalPrice | currency }}</h3>
+        <address>
+          <p>{{ address.value.addres }}</p>
+          <p>{{ address.value.aditional }}</p>
+          <p>{{ address.value.contact }}</p>
+        </address>
+       @if (address.value.payment != null) {
+        <p>Via {{ address.value.payment }}</p>
+       }
+      </div>
     </div>
   </div>
-</div>
+
+</section>
