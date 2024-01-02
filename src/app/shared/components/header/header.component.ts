@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-header',
   template: `
-    <nav class="navbar">
+    <nav class="navbar" #menu data-menu="closed">
       <h1 class="brand" routerLink="/">Coffee Bean</h1>
       <ul class="links">
+        <input class="checkbox" type="checkbox" (click)="toggleMenu(menu)" />
+        <div class="hamburger-lines">
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+        </div>
         <li (click)="scrollTo('home')">Home</li>
-        <li (click)="scrollTo('contact')">Contact</li>
+        <li (click)="scrollTo('shop')">Shop</li>
         <li (click)="scrollTo('about')">About us</li>
         <li class="button">
           <a class="order-btn" routerLink="order">Order Now</a>
@@ -17,59 +23,29 @@ import { RouterModule } from '@angular/router';
       </ul>
     </nav>
       `,
-  styles: [`
-    .navbar {
-      height: 90px;
-      width: 100%;
-      color: #fff;
-      background-color: rgb(56, 34, 15, 0.6);
-
-      display: flex;
-      padding: 0 60px;
-      align-items: center;
-      justify-content: space-between;
-
-      overflow: hidden;
-      position: fixed;
-      top: 0;
-      z-index: 999;
-    }
-
-    .brand {
-      font-size: 32px;
-      font-family: 'Clicker Script', cursive;
-      cursor: pointer;
-    }
-
-    .links {
-      font-family: 'Playfair Display', serif;
-      display: flex;
-      list-style: none;
-      align-items: center;
-      font-size: 20px;
-
-      gap: 2rem;
-      cursor: pointer;
-    }
-
-    .button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #967259;
-      height: 51px;
-      width: 135px;
-      border-radius: 32px;
-    }
-
-    .order-btn  {
-      text-decoration: none;
-      color: #fff;
-    }`
-],
+  styleUrl: 'header.component.css',
   imports: [RouterModule]
 })
 export class HeaderComponent {
+
+  activedRoute = inject(ActivatedRoute)
+
+  ngOnInit() {
+    console.log(this.activedRoute.snapshot.paramMap.get(''));
+
+  }
+
+  toggleMenu(menu: any) {
+
+    if (menu.dataset.menu === 'closed') {
+
+      menu.dataset.menu = 'open'
+      return
+    }
+
+    menu.dataset.menu = 'closed'
+
+  }
 
   scrollTo(el: any) {
     (document.getElementById(el) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});

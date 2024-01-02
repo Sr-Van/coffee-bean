@@ -22,6 +22,8 @@
   justify-content: center;
   color: #fff;
   margin-left: 60px;
+
+  z-index: 2;
 }
 
 .text p {
@@ -31,7 +33,7 @@
 
 .text h1 {
   font-family: 'Clicker Script', cursive;
-  font-size: 220px;
+  font-size: 60px;
 }
 
 .button {
@@ -58,18 +60,19 @@
 
 .xicara img{
   position: absolute;
-  right: 76px;
-  bottom: -30px;
-  width: 422px;
-  height: 422px;
+  right: 26px;
+  bottom: -10px;
+  width: 222px;
+  height: 222px;
 }
 
 .graos img {
   position: absolute;
-  width: 178px;
+  width: 100px;
 
-  top: 200px;
-  right: 200px;
+  top: 170px;
+  right: 80px;
+  z-index: -1;
 }
 
 
@@ -94,7 +97,9 @@
   --parallax-speed: -1;
 }
 
-
+.parallax_graos {
+  --parallax-speed: -5;
+}
 
 @keyframes parallax {
   to {
@@ -107,6 +112,7 @@ section {
   position: relative;
   z-index: 997;
 }
+
 .first-content {
   height: 800px;
   width: 100%;
@@ -136,30 +142,31 @@ section {
 
 .heart-img img {
   margin-top: 46px;
-  width: 420px;
+  width: 120px;
 }
 .splash {
-  width: 100%;
+  display: none;
   position: absolute;
 }
 
 .splash img:nth-child(1){
   position: absolute;
-  right: 0;
+  left: -53px;
   top: 400px;
-  width: 733px;
+  width: 433px;
   transform: rotate(180deg);
 }
 .splash img:nth-child(2){
   position: absolute;
-  top: 1300px;
-  width: 733px;
+  right: 0;
+  top: 1800px;
+  width: 433px;
   transform: rotate(360deg);
 }
 
 .second-content, .third-content  {
   width: 100%;
-  height: 600px;
+  height: 200dvh;
 
   display: flex;
   align-items: center;
@@ -174,13 +181,13 @@ section {
 }
 
 .third-content {
-  margin-top: 200px;
+  margin-top: 500px;
 }
 
 .third-content h4, .third-content-footer h4  {
   font-family: 'Playfair Display', serif;
   font-weight: lighter;
-  font-size: 20px;
+  font-size: 14px;
 }
 .third-content-footer {
   display: flex;
@@ -192,7 +199,129 @@ section {
 .second-content-title, .third-content-title, .third-content-footer h1 {
   font-family: 'Playfair Display', serif;
   color: #38220F;
-  font-size: 55px;
+  font-size: 25px;
   margin-bottom: 37px;
+}
+
+.cards_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.coffe_list {
+  gap: 2rem !important;
+}
+
+@media(min-width: 768px) {
+  .text p {
+    font-size: 16px;
+  }
+
+  .text h1 {
+    font-size: 180px;
+  }
+
+  .xicara img{
+    display: block;
+    bottom: -10px;
+    width: 322px;
+    height: 322px;
+  }
+
+  .heart-img img {
+    margin-top: 46px;
+    width: 320px;
+  }
+
+  .graos img {
+    width: 138px;
+    right: 150px;
+  }
+
+  .splash {
+    display: block;
+  }
+
+
+  .second-content, .third-content {
+    height: 100dvh;
+  }
+
+  .second-content-title, .third-content-title, .third-content-footer h1 {
+    font-size: 35px;
+  }
+}
+
+@media(min-width: 1024px) {
+  .splash img:nth-child(1){
+    left: -20px;
+    width: 533px;
+
+  }
+  .splash img:nth-child(2){
+    position: absolute;
+    right: 0;
+    width: 533px;
+
+  }
+}
+
+@media(min-width: 1440px) {
+  .text p {
+    font-size: 20px;
+  }
+
+  .text h1 {
+    font-size: 220px;
+  }
+
+  .xicara img{
+    right: 76px;
+    bottom: -30px;
+    width: 422px;
+    height: 422px;
+  }
+
+  .splash img:nth-child(1){
+    left: 85px;
+    width: 633px;
+
+  }
+  .splash img:nth-child(2){
+    right: 85px;
+    width: 633px;
+    top: 1400px;
+  }
+
+
+
+  .graos img {
+    width: 178px;
+
+    top: 200px;
+    right: 200px;
+  }
+
+  .splash img:nth-child(2){
+    display: block;
+  }
+
+  .second-content, .third-content {
+    height: 80dvh;
+  }
+}
+
+
+@media(min-width: 1920px) {
+  .splash img:nth-child(1){
+    left: 120px;
+    width: 833px;
+
+  }
+  .splash img:nth-child(2){
+    right: 120px;
+    width: 833px;
+    top: 1400px;
+  }
 }
 

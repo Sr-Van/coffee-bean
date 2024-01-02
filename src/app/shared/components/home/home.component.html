@@ -45,12 +45,12 @@
       </div>
     }
 
-    <div class="marker visually_hidden" #mark2></div>
+    <div class="marker visually_hidden" #mark2 id="shop"></div>
 
     @defer(on viewport(mark2)) {
-      <div class="content second-content">
+      <div class="content second-content" >
         <h1 class="second-content-title">Enjoy your life, enjoy our coffee</h1>
-        <div >
+        <div class="cards_list coffe_list">
           @for (item of coffeeList; track $index) {
             <app-card [card]="item"></app-card>
           }
@@ -61,10 +61,10 @@
     <div class="marker visually_hidden" #mark3></div>
 
     @defer (on viewport(mark3)) {
-      <div class="content third-content">
+      <div class="content third-content" id="about">
         <h1 class="third-content-title">Why are we different?</h1>
         <h4>We don’t just make your coffee, we make your day!</h4>
-        <div >
+        <div class="cards_list">
           @for (item of aboutList; track $index) {
             <app-card-about [card]="item" [index]="$index"></app-card-about>
           }

@@ -17,6 +17,8 @@ body {
 
   scroll-snap-type: both mandatory;
   scroll-behavior: smooth;
+
+  overflow-x: hidden;
 }
 
 .visually_hidden {
