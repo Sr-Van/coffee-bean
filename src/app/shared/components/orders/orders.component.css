@@ -1,6 +1,6 @@
 section {
   margin-top: 100px;
-  padding: 0 60px;
+  padding: 0 20px;
   font-family: 'Playfair Display', serif;
 
 }
@@ -93,4 +93,10 @@ section {
 
 .button:hover {
   background-color: #847266;
+}
+
+@media(min-width: 768px) {
+  section {
+    padding: 0 60px;
+  }
 }
