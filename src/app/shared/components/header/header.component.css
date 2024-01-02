@@ -110,12 +110,11 @@ display: block;
   font-size: 20px;
 
   gap: 2rem;
-  cursor: pointer;
 }
 
 .links li {
   display: none;
-
+  cursor: pointer;
 }
 .button {
   display: flex;
@@ -132,10 +131,4 @@ display: block;
   place-items: center;
   text-decoration: none;
   color: #fff;
-}
-
-@media(min-width: 765px) {
-  .button  {
-    background-color: #967259;
-  }
 }

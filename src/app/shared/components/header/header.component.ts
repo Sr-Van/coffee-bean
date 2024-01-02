@@ -29,9 +29,10 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 export class HeaderComponent {
 
   activedRoute = inject(ActivatedRoute)
+  router = inject(Router)
 
   ngOnInit() {
-    console.log(this.activedRoute.snapshot.paramMap.get(''));
+    console.log(this.router.url);
 
   }
 
@@ -48,6 +49,14 @@ export class HeaderComponent {
   }
 
   scrollTo(el: any) {
+    if(this.router.url !== '/') {
+      console.log('diferente de barra');
+      this.router.navigate(['/'])
+      setTimeout(()=>{
+        (document.getElementById(el) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      }, 800)
+      return
+    }
     (document.getElementById(el) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 
   }
