@@ -39,7 +39,7 @@
     <div class="orders_footer">
       <div>
         <h1>Your Order</h1>
-        <button class="button">Confirm</button>
+        <button class="button" (click)="confirmOrder()" >Confirm</button>
       </div>
       <div>
         <h3>Total: {{ totalPrice | currency }}</h3>
@@ -56,3 +56,39 @@
   </div>
 
 </section>
+
+<div data-js="overlay" class="dialog_container" [style.display]="isModalOpen ? 'block' : 'none'" (click)="closeModal($event)">
+  <dialog [open]="isModalOpen">
+    <div style="display: flex; flex-direction: column; gap: 1rem; justify-content: flex-start;">
+      <h1>Your order:</h1>
+      <div>
+        <h2>Products</h2>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; width: 50%; gap: 1rem; margin: 30px 0;">
+          @for (item of cartCoffeList; track $index) {
+            <li>
+              <p>{{ item.quantity }}x {{ item.name }} {{ item.price | currency}}</p>
+            </li>
+          }
+        </ul>
+      </div>
+      <div>
+        <h2>Address</h2>
+        <div>
+          <p>{{ address.value.addres }}</p>
+          <p>{{ address.value.aditional }}</p>
+          <p>{{ address.value.contact }}</p>
+          <p>{{ address.value.payment }}</p>
+        </div>
+      </div>
+      <div style="display: flex;  align-items: center;">
+        <h2>total:</h2>
+        <p>{{ totalPrice | currency}}</p>
+      </div>
+      <div class="confirmation">
+        <button routerLink="/thanks">Ok</button>
+        <button (click)="isModalOpen = false">Cancel</button>
+      </div>
+    </div>
+  </dialog>
+
+</div>

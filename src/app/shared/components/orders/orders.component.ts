@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { CoffeeService } from '../../services/coffee.service';
 import { Coffes } from '../../interfaces/coffes';
 import { Subscription } from 'rxjs';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-orders',
@@ -16,6 +16,7 @@ export class OrdersComponent {
   cartCoffeList: Coffes[]
   totalPrice: number
   subs: Subscription
+  isModalOpen: boolean = false
 
   address: FormGroup
   formulario = inject(FormBuilder)
@@ -32,21 +33,32 @@ export class OrdersComponent {
 
   ngOnInit() {
     this.address = this.formulario.group({
-      addres: [null],
-      aditional: [null],
-      contact: [null],
-      payment: [null]
+      addres: [null, Validators.required],
+      aditional: [null, Validators.required],
+      contact: [null, Validators.required],
+      payment: [null, Validators.required]
     })
     this.cartCoffeList = this.coffeServ.coffeeCart
     this.totalPrice = this.coffeServ.getTotalCoffePrice()
+  }
+
+  closeModal(event: any) {
+    if (event.target.dataset.js === 'overlay') {
+      this.isModalOpen = false
+      return
+    }
+  }
+
+  confirmOrder() {
+    if(this.address.status === "VALID") {
+      this.isModalOpen = true
+    }
+
   }
 
   ngOnDestroy() {
     this.subs.unsubscribe()
   }
 
-  show() {
-    console.log(this.address)
-  }
 
 }
