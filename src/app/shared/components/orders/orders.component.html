@@ -85,7 +85,7 @@
         <p>{{ totalPrice | currency}}</p>
       </div>
       <div class="confirmation">
-        <button routerLink="/thanks">Ok</button>
+        <button routerLink="/thanks" (click)="clearCart()">Ok</button>
         <button (click)="isModalOpen = false">Cancel</button>
       </div>
     </div>

@@ -68,7 +68,6 @@ export class CoffeeService {
   }
 
   filterCartList(item: any) {
-    console.log(this.coffeeCart.filter(coffee => coffee.name === item)[0]);
 
     return this.coffeeCart.filter(coffee => coffee.name === item)[0]
   }
@@ -88,7 +87,6 @@ export class CoffeeService {
     }
     const coffeList = this.getCoffeeList()
     const itemToAdd = coffeList.filter(coff => coff.name == item )[0]
-    console.log(`item adicionado ${item}`);
 
     this.coffeeCart.push(itemToAdd)
     this.setCoffeeCart()
@@ -99,7 +97,6 @@ export class CoffeeService {
   }
 
   getCartList() {
-    console.log('entrando no getCartList');
 
     if(localStorage['coffeeCart']) {
       this.coffeeCart = JSON.parse(localStorage.getItem('coffeeCart') || '')
@@ -137,5 +134,10 @@ export class CoffeeService {
     coff.quantity--
     this.setCoffeeCart()
 
+  }
+
+  clearCart() {
+    this.coffeeCart = []
+    this.setCoffeeCart()
   }
 }

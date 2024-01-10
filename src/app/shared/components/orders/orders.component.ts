@@ -56,6 +56,10 @@ export class OrdersComponent {
 
   }
 
+  clearCart() {
+    this.coffeServ.clearCart()
+  }
+
   ngOnDestroy() {
     this.subs.unsubscribe()
   }

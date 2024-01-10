@@ -16,6 +16,5 @@ export class HomeComponent {
   ngOnInit() {
     this.aboutList = this.coffee.getAboutList()
     this.coffeeList = this.coffee.getCoffeeList()
-    console.log(this.coffeeList)
   }
 }
