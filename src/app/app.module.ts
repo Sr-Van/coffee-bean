@@ -9,7 +9,7 @@ import { CardComponent } from './shared/components/card/card.component';
 import { CardAboutComponent } from './shared/components/card-about/card-about.component';
 import { CardCartComponent } from './shared/components/orders/card-cart/card-cart.component';
 import { OrdersComponent } from './shared/components/orders/orders.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
